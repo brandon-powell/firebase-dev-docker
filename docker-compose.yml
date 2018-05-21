@@ -1,0 +1,52 @@
+
+version: '3'
+services:
+  serve-functions:
+    command: ["bash", "-c", "./serve-all-functions.sh"]
+    build: ./
+    ports:
+     - "5000:5000"
+    volumes:
+     - $FB_ROOT_DIR:/code
+    working_dir: "/code"
+
+  serve-hosting:
+    command: ["firebase", "serve", "--host", "0.0.0.0", "--only", "hosting"]
+    build: ./
+    ports:
+     - "5000:5000"
+    volumes:
+     - $FB_ROOT_DIR:/code
+    working_dir: "/code"
+
+  deploy-hosting:
+    command: ["firebase", "deploy"]
+    build: ./
+    volumes:
+     - $FB_ROOT_DIR:/code
+    working_dir: "/code"
+
+  deploy-functions:
+    command: ["firebase", "deploy", "--only", "functions"]
+    build: ./
+    volumes:
+     - $FB_ROOT_DIR:/code
+    working_dir: "/code"
+
+  deploy-hosting:
+    command: ["firebase", "deploy", "--only", "hosting"]
+    build: ./
+    volumes:
+     - $FB_ROOT_DIR:/code
+    working_dir: "/code"
+
+  shell:
+    build: ./
+    ports:
+     - "5000:5000"
+    volumes:
+     - $FB_ROOT_DIR:/code
+    entrypoint: "/bin/bash"
+    stdin_open: true 
+    tty: true 
+    working_dir: "/code"

@@ -1,0 +1,5 @@
+{
+	"tokens": {
+		"refresh_token": "$FIREBASE_TOKEN"
+	}
+}
