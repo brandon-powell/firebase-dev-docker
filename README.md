@@ -4,7 +4,7 @@ Docker container setup to enable firebase development with minimal setup. Also i
 
 # Instructions
 1. Create non-interactive token with firebase login:ci if you don't have one already.
-2. Set ENV FIREBASE_TOKEN to the generated token in Dockerfile
+2. Set FIREBASE_TOKEN to the generated token in .env file.
 3. Set FB_ROOT_DIR to your Firebase project working directory in .env file.
 4. Move serve-all-functions.sh to your Firebase working directory if it isn't already in it. 
 5. Run docker-compose services to perform Firebase tasks and enjoy. 
